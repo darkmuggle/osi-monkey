@@ -15,20 +15,28 @@ import (
 
 // Monkey build time.
 func init() {
-	DefaultChannel = "oopta"
-	logrus.Infof("Overriding default channel with 'Oopta'")
+	DefaultChannel = "ootpa"
+	logrus.Infof("Overriding default channel with 'ootpa'")
 	logrus.Infof(`This build allows for the following envVars to override defaults:
-	RHCOS_URL: the URL to fetch images, defaults to %s
+	RHCOS_CHANNEL: the channel to use, defaults to %s
 	RHCOS_NAME: the release name, defualts to %s
 	RHCOS_QCOW: use a local qcow2 image
+	RHCOS_URL: the URL to fetch images, defaults to %s
 
-	`, baseURL, buildName)
+	`, DefaultChannel, baseURL, buildName)
+
+	// Replace the Channel
+	newChannel, ok := os.LookupEnv("RHCOS_CHANNEL")
+	if ok {
+		DefaultChannel = newChannel
+		logrus.Infof("Setting channel to %s", newChannel)
+	}
 
 	// Replace the URL
 	newURL, ok := os.LookupEnv("RHCOS_URL")
 	if ok {
 		baseURL = newURL
-		logrus.Infof("Setting channel to %s", newURL)
+		logrus.Infof("Setting URL to %s", newURL)
 	}
 
 	// Replace the build number

@@ -20,7 +20,13 @@ envVars
 ===
 
 Three environment variables are exposed:
+* `RHCOS_CHANNEL` defaults to Ootpa, but allows you change it
 * `RHCOS_URL` which allows you to follow a different RHCOS stream
 * `RHCOS_NAME` to override the build name
 * `RHCOS_QCOW` to override Libvirt QCOW2 images to _local_ file.
 
+For example:
+```
+export RHCOS_URL="https://horcruxes.me/storage/releases/"
+osi-monkey create cluster
+```
