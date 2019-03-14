@@ -1,6 +1,6 @@
 package rhcos
 
-/* This is hack that monkey provides run-time overrides to the defaults.
+/* This is hack a that monkey patches in run-time overrides to the defaults.
    It expects to be in the `pkg/rhcos` directory of of the installer source.
 */
 
