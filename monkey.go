@@ -23,7 +23,7 @@ func init() {
 	RHCOS_QCOW: use a local qcow2 image
 	RHCOS_URL: the URL to fetch images, defaults to %s
 
-	`, DefaultChannel, baseURL, buildName)
+	`, DefaultChannel, buildName, baseURL)
 
 	// Replace the Channel
 	newChannel, ok := os.LookupEnv("RHCOS_CHANNEL")
